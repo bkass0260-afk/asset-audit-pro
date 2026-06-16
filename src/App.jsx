@@ -1,39 +1,30 @@
-import './App.css';
-import AssetCard from './components/AssetCard';
+import React from 'react';
 
-function App() {
-  // Your asset data
-  const assets = [
-    { id: 1, name: 'Main Property', category: 'Real Estate', cost: 250000, roi: 12.5, status: 'Active' },
-    { id: 2, name: 'Tech Portfolio', category: 'Stocks', cost: 75000, roi: 8.2, status: 'Active' },
-    { id: 3, name: 'Equipment Lease', category: 'Business', cost: 15000, roi: 5.0, status: 'Maintenance' },
-  ];
-
+const AssetCard = ({ asset }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
-      <header className="bg-slate-950 border-b border-slate-700 py-6 px-8">
-        <h1 className="text-3xl font-bold text-white">Asset Audit Pro</h1>
-        <p className="text-slate-400 mt-2">Institutional-grade asset management and portfolio auditing</p>
-      </header>
-      
-      <main className="p-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Dashboard Header */}
-          <div className="bg-slate-800 rounded-lg border border-slate-700 p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">Dashboard</h2>
-            <p className="text-slate-300">Welcome to Asset Audit Pro. Managing {assets.length} active assets.</p>
-          </div>
-
-          {/* Asset Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {assets.map((item) => (
-              <AssetCard key={item.id} asset={item} />
-            ))}
-          </div>
+    <div className="bg-slate-900 border border-slate-800 p-5 rounded-xl hover:border-indigo-500/50 transition-all">
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h3 className="text-sm font-bold text-white">{asset.address}</h3>
+          <p className="text-xs text-slate-400">{asset.city}, {asset.state}</p>
         </div>
-      </main>
+        <span className="text-[10px] font-bold uppercase px-2 py-1 bg-slate-950 border border-slate-800 rounded text-slate-300">
+          {asset.status}
+        </span>
+      </div>
+      
+      <div className="space-y-2 font-mono text-xs">
+        <div className="flex justify-between text-slate-500">
+          <span>Cost Basis</span>
+          <span className="text-white">${(asset.acquisition_cost + asset.repair_cost).toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between text-slate-500">
+          <span>Resale Value</span>
+          <span className="text-emerald-400">${asset.resale_value.toLocaleString()}</span>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default AssetCard;
