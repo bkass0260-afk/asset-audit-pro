@@ -1,6 +1,14 @@
-import './App.css'
+import './App.css';
+import AssetCard from './components/AssetCard';
 
 function App() {
+  // Your asset data
+  const assets = [
+    { id: 1, name: 'Main Property', category: 'Real Estate', cost: 250000, roi: 12.5, status: 'Active' },
+    { id: 2, name: 'Tech Portfolio', category: 'Stocks', cost: 75000, roi: 8.2, status: 'Active' },
+    { id: 3, name: 'Equipment Lease', category: 'Business', cost: 15000, roi: 5.0, status: 'Maintenance' },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
       <header className="bg-slate-950 border-b border-slate-700 py-6 px-8">
@@ -10,14 +18,22 @@ function App() {
       
       <main className="p-8">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-slate-800 rounded-lg border border-slate-700 p-8">
+          {/* Dashboard Header */}
+          <div className="bg-slate-800 rounded-lg border border-slate-700 p-8 mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">Dashboard</h2>
-            <p className="text-slate-300">Welcome to Asset Audit Pro. Start managing your portfolio assets and perform comprehensive audits.</p>
+            <p className="text-slate-300">Welcome to Asset Audit Pro. Managing {assets.length} active assets.</p>
+          </div>
+
+          {/* Asset Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {assets.map((item) => (
+              <AssetCard key={item.id} asset={item} />
+            ))}
           </div>
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
