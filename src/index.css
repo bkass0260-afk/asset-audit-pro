@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles for a premium, clean look */
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Optional: Ensure your app fills the viewport */
+#root {
+  min-height: 100vh;
+}
