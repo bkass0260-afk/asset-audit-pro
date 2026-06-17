@@ -5,16 +5,6 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-        },
-      },
-    },
-  },
-  server: {
-    port: 5173,
+    sourcemap: false, // Turn off for faster, more stable builds
   },
 });
