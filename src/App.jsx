@@ -1,18 +1,15 @@
 import React from 'react';
-import AssetCard from './components/AssetCard';
-
-const sampleAsset = {
-  name: "Sample Property",
-  category: "Real Estate",
-  status: "Active",
-  cost: 250000,
-  roi: 12
-};
+import Navbar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
+import { AssetProvider } from './context/AssetContext';
 
 export default function App() {
   return (
-    <div className="p-10 bg-slate-100 min-h-screen">
-      <AssetCard asset={sampleAsset} />
-    </div>
+    <AssetProvider>
+      <div className="min-h-screen bg-slate-100">
+        <Navbar />
+        <Dashboard />
+      </div>
+    </AssetProvider>
   );
 }
